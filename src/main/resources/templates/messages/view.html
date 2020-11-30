@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout">
+  <head>
+    <title>Students : View</title>
+  </head>
+  <body>
+    <h1 layout:fragment="header">Students : Create</h1>
+    <div layout:fragment="content"
+        class="container">
+      <div class="alert alert-success"
+          th:if="${globalMessage}"
+          th:text="${globalMessage}">
+        Some Success student
+      </div>
+      <div class="pull-right">
+        <a th:href="@{/}" href="list.html">
+          Students
+        </a>
+      </div>
+      <div class="pull-left">
+        <a href="form2.html" th:href="@{'/' + ${student.id} + '/form2'}">Edit</a>
+      </div>
+      <br></br>
+      <dl>
+        <dt>ID</dt>
+        <dd id="id" th:text="${student.id}">123</dd>
+        <dt>secondName</dt>
+        <dd id="summary"
+            th:text="${student.secondName}">
+          A short summary...
+        </dd>
+        <dt>name</dt>
+        <dd id="text"
+            th:text="${student.name}">
+        </dd>
+        <dt>lastName</dt>
+        <dd id="lastName" th:text="${student.lastName}">123</dd>
+        <dt>birthdayDate</dt>
+        <dd id="birthdayDate" th:text="${student.birthdayDate}">123</dd>
+        <dt>groupName</dt>
+        <dd id="groupName" th:text="${student.groupName}">123</dd>
+      </dl>
+    </div>
+  </body>
+</html>

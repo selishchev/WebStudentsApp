@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Students : Edit</title>
+</head>
+<body>
+<h1 layout:fragment="header">Students : Edit</h1>
+<div layout:fragment="content"
+     class="container">
+    <form id="messageForm"
+          th:action="@{/(form2)}"
+          th:object="${student}"
+          action="#"
+          method="post">
+        <div th:if="${#fields.hasErrors('*')}"
+             class="alert alert-error">
+            <p th:each="error : ${#fields.errors('*')}"
+               th:text="${error}">
+                Validation error
+            </p>
+        </div>
+        <div class="pull-right">
+            <a th:href="@{/}" href="list.html">
+                Students
+            </a>
+        </div>
+        <label for="name">name</label>
+        <input type="text"
+               th:field="*{name}"
+               th:value="${student.name}"
+               th:class="${#fields.hasErrors('name')} ? 'field-error'"/>
+        <label for="secondName">secondName</label>
+        <input type="text"
+               th:field="*{secondName}"
+               th:class="${#fields.hasErrors('secondName')} ? 'field-error'"/>
+        <label for="lastName">lastName</label>
+        <input type="text"
+               th:field="*{lastName}"
+               th:class="${#fields.hasErrors('lastName')} ? 'field-error'"/>
+        <label for="birthdayDate">birthdayDate</label>
+        <input pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" type="text"
+               th:field="*{birthdayDate}"
+               th:class="${#fields.hasErrors('birthdayDate')} ? 'field-error'"/>
+        <label for="groupName">groupName</label>
+        <input type="text"
+               th:field="*{groupName}"
+               th:class="${#fields.hasErrors('groupName')} ? 'field-error'"/>
+        <div class="form-actions">
+            <input type="submit" value="Edit"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

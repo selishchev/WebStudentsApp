@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout">
+  <head>
+    <title>Students : View all</title>
+  </head>
+  <body>
+    <h1 layout:fragment="header">Students : View all</h1>
+    <div layout:fragment="content" class="container">
+      <div class="pull-right">
+        <a href="form.html" th:href="@{/(form)}">Create Student</a>
+       </div>
+      <div class="pull-left">
+        <a href="groups.html" th:href="@{/(groups)}">Lists of groups</a>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>name</td>
+            <td>secondName</td>
+            <td>lastName</td>
+            <td>birthdayDate</td>
+            <td>groupName</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${students.empty}">
+            <td colspan="3">
+              No students
+            </td>
+          </tr>
+          <tr th:each="student : ${students}">
+            <td>
+              <a href="view.html"
+                 th:href="@{'/' + ${student.id}}"
+                 th:text="${student.id}">
+                The summary
+              </a></td>
+            <td th:text="${student.name}">
+            </td>
+            <td th:text="${student.secondName}">4</td>
+            <td th:text="${student.lastName}">5</td>
+            <td th:text="${student.birthdayDate}">6</td>
+            <td th:text="${student.groupName}">
+                The summary
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
